@@ -1,5 +1,8 @@
-(function getComputerChoice() {
-  const choices = ["Rock", "Paper", "Scissor"];
+function getComputerChoice() {
+  const choices = ["rock", "paper", "scissor"];
   const randomIndex = Math.round(Math.random()*2);
-  console.log(randomIndex);
-})()
+  // console.log(choices[randomIndex]);
+  return choices[randomIndex];
+}
+
+getComputerChoice();
