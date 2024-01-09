@@ -13,7 +13,7 @@ function singleRound(playerSelection, computerSelection) {
   const ps = playerSelection.toLowerCase();
 
   if (ps === computerSelection){
-    return "Tie! Play again!";
+    return ["Tie! Play again!", null];
   }
   else if (ps == "rock") {
     if (computerSelection == "paper") 
@@ -34,22 +34,35 @@ function singleRound(playerSelection, computerSelection) {
       return ["You Lose! Rock beats scissor!!", false];
   }
   else {
-    return ["Invalid Choice", null];
+    return ["Invalid Choice", undefined];
   }
 }
 
 //? Play a session where people win best out of 5
 function game() {
-  
-  for (let i = 0; i < 5; i++) {
+  let playerWon = 0;
+  let computerWon = 0;
+
+  while ((playerWon + computerWon) <= 5) {
     const playerChoice = prompt("Your choice: ");
     const computerChoice = getComputerChoice();
 
     const res = singleRound(playerChoice, computerChoice);
+    console.log(res);
+    if (res[1] === true)
+      playerWon += 1
+    else if (res[1] === false)
+      computerWon += 1
 
     console.log(res[0]);
   }
 
+  if (playerWon > 2)
+    console.log("You Win!!!");
+  else
+    console.log("You Lose!!!");
+
+  console.log("Final Score: ", `You: ${playerWon} Computer: ${computerWon}`);
 }
 
 game();
