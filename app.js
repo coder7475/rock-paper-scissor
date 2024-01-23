@@ -1,6 +1,23 @@
 //? random computer choice
 const choices = ["rock", "paper", "scissor"];
 
+// get the three button
+const rockButton = document.getElementById("rock");
+const paperButton = document.getElementById("paper");
+const scissorButton = document.getElementById("scissor");
+
+rockButton.addEventListener('click', () => {
+  console.log("clicked rock button")
+});
+
+paperButton.addEventListener('click', () => {
+  console.log("clicked paper button")
+});
+
+scissorButton.addEventListener('click', () => {
+  console.log("clicked scissor button")
+})
+
 function getComputerChoice() {
   const randomIndex = Math.round(Math.random()*2);
   // console.log(choices[randomIndex]);
@@ -9,7 +26,7 @@ function getComputerChoice() {
 
 // getComputerChoice();
 //? write a function that plays a single round
-function singleRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
   const ps = playerSelection.toLowerCase();
 
   if (ps === computerSelection){
@@ -65,4 +82,4 @@ function singleRound(playerSelection, computerSelection) {
 //   console.log("Final Score: ", `You: ${playerWon} Computer: ${computerWon}`);
 // }
 
-game();
+// game();
