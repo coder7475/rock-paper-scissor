@@ -7,15 +7,24 @@ const paperButton = document.getElementById("paper");
 const scissorButton = document.getElementById("scissor");
 
 rockButton.addEventListener('click', () => {
-  console.log("clicked rock button")
+  const computerSelection = getComputerChoice();
+  const result = playRound("rock", computerSelection);
+
+  console.log(result);
 });
 
 paperButton.addEventListener('click', () => {
-  console.log("clicked paper button")
+  const computerSelection = getComputerChoice();
+  const result = playRound("rock", computerSelection);
+  
+  console.log(result);
 });
 
 scissorButton.addEventListener('click', () => {
-  console.log("clicked scissor button")
+  const computerSelection = getComputerChoice();
+  const result = playRound("rock", computerSelection);
+  
+  console.log(result);
 })
 
 function getComputerChoice() {
