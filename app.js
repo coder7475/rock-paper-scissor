@@ -39,30 +39,30 @@ function singleRound(playerSelection, computerSelection) {
 }
 
 //? Play a session where people win best out of 5
-function game() {
-  let playerWon = 0;
-  let computerWon = 0;
+// function game() {
+//   let playerWon = 0;
+//   let computerWon = 0;
 
-  while ((playerWon + computerWon) <= 5) {
-    const playerChoice = prompt("Your choice: ");
-    const computerChoice = getComputerChoice();
+//   while ((playerWon + computerWon) <= 5) {
+//     const playerChoice = prompt("Your choice: ");
+//     const computerChoice = getComputerChoice();
 
-    const res = singleRound(playerChoice, computerChoice);
-    console.log(res);
-    if (res[1] === true)
-      playerWon += 1
-    else if (res[1] === false)
-      computerWon += 1
+//     const res = singleRound(playerChoice, computerChoice);
+//     // console.log(res);
+//     if (res[1] === true)
+//       playerWon += 1
+//     else if (res[1] === false)
+//       computerWon += 1
 
-    console.log(res[0]);
-  }
+//     console.log(res[0]);
+//   }
 
-  if (playerWon > 2)
-    console.log("You Win!!!");
-  else
-    console.log("You Lose!!!");
+//   if (playerWon > 2)
+//     console.log("You Win!!!");
+//   else
+//     console.log("You Lose!!!");
 
-  console.log("Final Score: ", `You: ${playerWon} Computer: ${computerWon}`);
-}
+//   console.log("Final Score: ", `You: ${playerWon} Computer: ${computerWon}`);
+// }
 
 game();
