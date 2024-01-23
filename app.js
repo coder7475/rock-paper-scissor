@@ -5,26 +5,27 @@ const choices = ["rock", "paper", "scissor"];
 const rockButton = document.getElementById("rock");
 const paperButton = document.getElementById("paper");
 const scissorButton = document.getElementById("scissor");
+const result = document.querySelector("#result");
 
 rockButton.addEventListener('click', () => {
   const computerSelection = getComputerChoice();
-  const result = playRound("rock", computerSelection);
+  const res = playRound("rock", computerSelection);
 
-  console.log(result);
+  result.textContent = res[0];
 });
 
 paperButton.addEventListener('click', () => {
   const computerSelection = getComputerChoice();
-  const result = playRound("rock", computerSelection);
-  
-  console.log(result);
+  const res = playRound("rock", computerSelection);
+
+  result.textContent = res[0];
 });
 
 scissorButton.addEventListener('click', () => {
   const computerSelection = getComputerChoice();
-  const result = playRound("rock", computerSelection);
+  const res = playRound("rock", computerSelection);
   
-  console.log(result);
+  result.textContent = res[0];
 })
 
 function getComputerChoice() {
