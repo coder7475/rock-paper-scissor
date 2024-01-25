@@ -1,66 +1,86 @@
 //? random computer choice
 const choices = ["rock", "paper", "scissor"];
-
+let playerPoints = 0;
+let computerPoints = 0;
 // get the three button
 const rockButton = document.getElementById("rock");
 const paperButton = document.getElementById("paper");
 const scissorButton = document.getElementById("scissor");
 const result = document.querySelector("#result");
+const playerPointsUI = document.querySelector("#playerPoints");
+const computerPointsUI = document.querySelector("#computerPoints");
 
-rockButton.addEventListener('click', () => {
+rockButton.addEventListener("click", () => {
   const computerSelection = getComputerChoice();
   const res = playRound("rock", computerSelection);
-
+  updateScore();
+  result.textContent = res[0];
+});
+console.log(playerPoints)
+paperButton.addEventListener("click", () => {
+  const computerSelection = getComputerChoice();
+  const res = playRound("rock", computerSelection);
+  updateScore()
   result.textContent = res[0];
 });
 
-paperButton.addEventListener('click', () => {
+scissorButton.addEventListener("click", () => {
   const computerSelection = getComputerChoice();
   const res = playRound("rock", computerSelection);
-
+  updateScore()
   result.textContent = res[0];
 });
-
-scissorButton.addEventListener('click', () => {
-  const computerSelection = getComputerChoice();
-  const res = playRound("rock", computerSelection);
-  
-  result.textContent = res[0];
-})
 
 function getComputerChoice() {
-  const randomIndex = Math.round(Math.random()*2);
+  const randomIndex = Math.round(Math.random() * 2);
   // console.log(choices[randomIndex]);
   return choices[randomIndex];
 }
 
+// update score 
+function updateScore() {
+  playerPointsUI.textContent = playerPoints;
+  computerPointsUI.textContent = computerPoints;
+}
 // getComputerChoice();
 //? write a function that plays a single round
 function playRound(playerSelection, computerSelection) {
   const ps = playerSelection.toLowerCase();
-
-  if (ps === computerSelection){
+ 
+  if (ps === computerSelection) {
     return ["Tie! Play again!", null];
-  }
-  else if (ps == "rock") {
-    if (computerSelection == "paper") 
+  } else if (ps == "rock") {
+    if (computerSelection == "paper"){
+      playerPoints++;
       return [`You Win! Rock beats Paper!!`, true];
-    else
+    }
+    else 
+    {
+      computerPoints++;
       return ["You Lose! Scissor beats Rock!!", false];
-  }
-  else if (ps == "paper") {
+    }
+  } else if (ps == "paper") {
     if (computerSelection == "rock") 
+    {
+      playerPoints++;
       return [`You Win! Paper beats Rock`, true];
-    else
+    }
+    else 
+    {
+      computerPoints++;
       return ["You Lose! Scissor beats Papper!!", false];
-  }
-  else if (ps == "scissor") {
-    if (computerSelection == "paper") 
+    }
+  } else if (ps == "scissor") {
+    if (computerSelection == "paper"){
+      playerPoints++;
       return [`You Win! Scissor beats Paper!!`, true];
-    else
+    }
+    else 
+    {
+      computerPoints++;
       return ["You Lose! Rock beats scissor!!", false];
-  }
-  else {
+    }
+  } else {
     return ["Invalid Choice", undefined];
   }
 }
