@@ -1,22 +1,32 @@
 //? random computer choice
 const choices = ["rock", "paper", "scissor"];
+
+function getComputerChoice() {
+  const randomIndex = Math.round(Math.random() * 2);
+  // console.log(choices[randomIndex]);
+  return choices[randomIndex];
+}
+
+// Initial value of scores 
 let playerPoints = 0;
 let computerPoints = 0;
-// get the three button
+
+// Selectors for DOM Node
 const rockButton = document.getElementById("rock");
 const paperButton = document.getElementById("paper");
 const scissorButton = document.getElementById("scissor");
 const result = document.querySelector("#result");
 const playerPointsUI = document.querySelector("#playerPoints");
 const computerPointsUI = document.querySelector("#computerPoints");
-
+const winner = document.getElementById("winner");
+// Add Event Listener
 rockButton.addEventListener("click", () => {
   const computerSelection = getComputerChoice();
   const res = playRound("rock", computerSelection);
   updateScore();
   result.textContent = res[0];
 });
-console.log(playerPoints)
+
 paperButton.addEventListener("click", () => {
   const computerSelection = getComputerChoice();
   const res = playRound("rock", computerSelection);
@@ -31,18 +41,17 @@ scissorButton.addEventListener("click", () => {
   result.textContent = res[0];
 });
 
-function getComputerChoice() {
-  const randomIndex = Math.round(Math.random() * 2);
-  // console.log(choices[randomIndex]);
-  return choices[randomIndex];
-}
 
-// update score 
+// update score in UI funciton
 function updateScore() {
   playerPointsUI.textContent = playerPoints;
   computerPointsUI.textContent = computerPoints;
+  if (playerPoints === 5)
+    winner.textContent = "Player is the final winner!!!"
+  if (computerPoints === 5)
+    winner.textContent = "Computer is the winner!!!"
 }
-// getComputerChoice();
+
 //? write a function that plays a single round
 function playRound(playerSelection, computerSelection) {
   const ps = playerSelection.toLowerCase();
@@ -85,7 +94,7 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-//? Play a session where people win best out of 5
+// Play a session where people win best out of 5
 // function game() {
 //   let playerWon = 0;
 //   let computerWon = 0;
