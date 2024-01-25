@@ -7,7 +7,7 @@ function getComputerChoice() {
   return choices[randomIndex];
 }
 
-// Initial value of scores 
+// Initial value of scores
 let playerPoints = 0;
 let computerPoints = 0;
 
@@ -30,70 +30,65 @@ rockButton.addEventListener("click", () => {
 paperButton.addEventListener("click", () => {
   const computerSelection = getComputerChoice();
   const res = playRound("rock", computerSelection);
-  updateScore()
+  updateScore();
   result.textContent = res[0];
 });
 
 scissorButton.addEventListener("click", () => {
   const computerSelection = getComputerChoice();
   const res = playRound("rock", computerSelection);
-  updateScore()
+  updateScore();
   result.textContent = res[0];
 });
-
 
 // update score in UI funciton
 function updateScore() {
   playerPointsUI.textContent = playerPoints;
   computerPointsUI.textContent = computerPoints;
-  if (playerPoints === 5){
-    winner.textContent = "Player is the final winner!!!"
-    rockButton.disabled = true;
-    paperButton.disabled = true;
-    scissorButton.disabled = true;
+  if (playerPoints === 5) {
+    winner.textContent = "Player is the final winner!!!";
+    disableButtons();
   }
-  if (computerPoints === 5){
-    winner.textContent = "Computer is the winner!!!"
-    rockButton.disabled = true;
-    paperButton.disabled = true;
-    scissorButton.disabled = true;
+  if (computerPoints === 5) {
+    winner.textContent = "Computer is the winner!!!";
+    disableButtons();
   }
+}
+
+// create a function to disable buttons
+function disableButtons() {
+  rockButton.disabled = true;
+  paperButton.disabled = true;
+  scissorButton.disabled = true;
 }
 
 //? write a function that plays a single round
 function playRound(playerSelection, computerSelection) {
   const ps = playerSelection.toLowerCase();
- 
+
   if (ps === computerSelection) {
     return ["Tie! Play again!", null];
   } else if (ps == "rock") {
-    if (computerSelection == "paper"){
+    if (computerSelection == "paper") {
       playerPoints++;
       return [`You Win! Rock beats Paper!!`, true];
-    }
-    else 
-    {
+    } else {
       computerPoints++;
       return ["You Lose! Scissor beats Rock!!", false];
     }
   } else if (ps == "paper") {
-    if (computerSelection == "rock") 
-    {
+    if (computerSelection == "rock") {
       playerPoints++;
       return [`You Win! Paper beats Rock`, true];
-    }
-    else 
-    {
+    } else {
       computerPoints++;
       return ["You Lose! Scissor beats Papper!!", false];
     }
   } else if (ps == "scissor") {
-    if (computerSelection == "paper"){
+    if (computerSelection == "paper") {
       playerPoints++;
       return [`You Win! Scissor beats Paper!!`, true];
-    }
-    else 
-    {
+    } else {
       computerPoints++;
       return ["You Lose! Rock beats scissor!!", false];
     }
