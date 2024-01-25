@@ -46,10 +46,18 @@ scissorButton.addEventListener("click", () => {
 function updateScore() {
   playerPointsUI.textContent = playerPoints;
   computerPointsUI.textContent = computerPoints;
-  if (playerPoints === 5)
+  if (playerPoints === 5){
     winner.textContent = "Player is the final winner!!!"
-  if (computerPoints === 5)
+    rockButton.disabled = true;
+    paperButton.disabled = true;
+    scissorButton.disabled = true;
+  }
+  if (computerPoints === 5){
     winner.textContent = "Computer is the winner!!!"
+    rockButton.disabled = true;
+    paperButton.disabled = true;
+    scissorButton.disabled = true;
+  }
 }
 
 //? write a function that plays a single round
